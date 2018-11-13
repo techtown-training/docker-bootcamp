@@ -1,4 +1,4 @@
-# docker-bootcmp
+# docker-bootcamp
 ASPE's 3 day hands-on Docker class, taught by an expert from Techtown Labs.
 
 Current version of instructor materials - https://aspetraining.securevdr.com/d-sc8cdcdcf4e049f19
