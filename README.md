@@ -1,11 +1,13 @@
 # docker-bootcamp
 ASPE's 3 day hands-on Docker class, taught by an expert from Techtown Labs.
 
+The course developer is Agile Brains - ahashmi@agilebrainsconsulting.com 
+
+The course as we currently advertise it- http://techtowntraining.com/courses/docker-containerization-boot-camp
+
 Current version of instructor materials - https://aspetraining.securevdr.com/d-sc8cdcdcf4e049f19
 
 Current version of student materials - https://aspetraining.securevdr.com/d-s067907d64bc4cec8
-
-The course as we currently advertise it- http://techtowntraining.com/courses/docker-containerization-boot-camp
 
 Here are the prerequisites we send to students enrolled in the class: http://aspetraining.com/files/Course-Requirements/Docker.pdf
 
