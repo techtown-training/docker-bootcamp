@@ -1,7 +1,7 @@
 ## Lab Setup for docker-bootcamp course
 
 ### Create instances
-
+You can find the image in ASPE AWS account.
 - Select image `ami-069ac4c035e8d8d74` OR `docker-bootcamp`
 - Type of instance required `t2.micro`
 - Enable `Auto-assign public IP`

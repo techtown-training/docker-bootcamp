@@ -31,3 +31,4 @@ Create Image using AWS UI
 ## Image details
 - Image name: docker-bootcamp
 - Id: ami-069ac4c035e8d8d74
+This image has been created and stored in ASPE AWS account
