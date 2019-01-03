@@ -2,7 +2,7 @@
 Great! So you have now looked at `docker run`, played with a Docker container and also got the hang of some terminology. Armed with all this knowledge, you are now ready to get to the real stuff &#8212; deploying web applications with Docker.
 
 ### 2.1 Run a static website in a container
->**Note:** Code for this section is in this repo in the [static-site directory](https://github.com/shekhar2010us/docker_bootcamp/tree/master/exercise/src_code/static-site).
+>**Note:** Code for this section is in this repo in the [static-site directory](https://github.com/techtown-training/docker-bootcamp/tree/master/exercise/src_code/static-site).
 
 Let's start by taking baby-steps. First, we'll use Docker to run a static website in a container. The website is based on an existing image. We'll pull a Docker image from Docker Store, run the container, and see how easy it is to set up a web server.
 
@@ -163,7 +163,7 @@ Another key concept is the idea of _official images_ and _user images_. (Both of
 
 ### 2.3 Create your first image
 
->**Note:** The code for this section is in this repository in the [flask-app](https://github.com/shekhar2010us/docker_bootcamp/tree/master/exercise/src_code/flask-app) directory.
+>**Note:** The code for this section is in this repository in the [flask-app](https://github.com/techtown-training/docker-bootcamp/tree/master/exercise/src_code/flask-app) directory.
 
 Now that you have a better understanding of images, it's time to create your own. Our goal here is to create an image that sandboxes a small [Flask](http://flask.pocoo.org) application.
 

@@ -4,7 +4,7 @@ This portion of the tutorial will guide you through the creation and customizati
 
 
 ### Voting app
-For this application we will use the [Docker Example Voting App](https://github.com/shekhar2010us/docker_bootcamp/tree/master/exercise/src_code/example-voting-app). This app consists of five components:
+For this application we will use the [Docker Example Voting App](https://github.com/techtown-training/docker-bootcamp/tree/master/exercise/src_code/example-voting-app). This app consists of five components:
 
 * Python webapp which lets you vote between two options
 * Redis queue which collects new votes
@@ -15,7 +15,7 @@ For this application we will use the [Docker Example Voting App](https://github.
 Clone the repository onto your machine and `cd` into the directory:
 
 ```
-git clone https://github.com/shekhar2010us/docker_bootcamp.git
+git clone https://github.com/techtown-training/docker-bootcamp.git
 
 cd exercise/src_code/example-voting-app/
 ```
@@ -157,7 +157,7 @@ If you take a look at `docker-stack.yml`, you will see that the file defines
 * .NET based worker app based on a .NET image
 * Postgres container based on a postgres image
 
-The Compose file also defines two networks, front-tier and back-tier. Each container is placed on one or two networks. Once on those networks, they can access other services on that network in code just by using the name of the service. Services can be on any number of networks. Services are isolated on their network. Services are only able to discover each other by name if they are on the same network. To learn more about networking check out the [Networking Lab](https://github.com/shekhar2010us/docker_bootcamp/tree/master/exercise/src_code/networking).
+The Compose file also defines two networks, front-tier and back-tier. Each container is placed on one or two networks. Once on those networks, they can access other services on that network in code just by using the name of the service. Services can be on any number of networks. Services are isolated on their network. Services are only able to discover each other by name if they are on the same network. To learn more about networking check out the [Networking Lab](https://github.com/techtown-training/docker-bootcamp/tree/master/exercise/src_code/networking).
 
 Take a look at the file again. You'll see it starts with
 

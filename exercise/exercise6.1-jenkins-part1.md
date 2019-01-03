@@ -111,4 +111,4 @@ docker container ls -a
 
 To verify that the Docker hello world image was indeed run on the host computer.
 
-Next, practice using creating a persistent volume to share between Jenkins instances in [part 2](https://github.com/shekhar2010us/docker_bootcamp/blob/master/exercise/exercise6.2-jenkins-part2.md)
+Next, practice using creating a persistent volume to share between Jenkins instances in [part 2](https://github.com/techtown-training/docker-bootcamp/blob/master/exercise/exercise6.2-jenkins-part2.md)

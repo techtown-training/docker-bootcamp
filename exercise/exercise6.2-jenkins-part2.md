@@ -37,4 +37,4 @@ docker run --volumes-from jenkinstore --name jenkin2 -p 8080:8080 -p 50000:50000
 
 Once this new container is running, you should observe that Jenkins is already setup with the plugins you just installed with the other container and has the login user from the prior container as well. 
 
-Next, we will practice creating a running continous intergration example in [part 3](https://github.com/shekhar2010us/docker_bootcamp/blob/master/exercise/exercise6.3-jenkins-part3.md)
+Next, we will practice creating a running continous intergration example in [part 3](https://github.com/techtown-training/docker-bootcamp/blob/master/exercise/exercise6.3-jenkins-part3.md)
