@@ -1,0 +1,17 @@
+version: '2'
+services:
+  mobycounter:
+    container_name: mobycounter
+    image: mobycounter
+    links:
+      - "redis:redis"
+    ports: 
+      - "80:80"
+  redis:
+    container_name: redis
+    image: redis:alpine
+    volumes:
+      - "redis:/data"
+volumes:
+  redis:
+    driver: local
