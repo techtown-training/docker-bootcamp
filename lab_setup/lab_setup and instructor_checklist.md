@@ -27,3 +27,12 @@ Test_Instance_and_Connection.docx
 ```
 
 All required instruction for testing in mentioned in the word document.
+
+## Instance connection
+Three things are required to connect to AWS instance
+
+- <b>username:</b> ubuntu (all small case)
+- <b>Password:</b> There is no password, ASPE will provide the Default.ppk or Default.pem file. To mention here, if you are using unix/mac machines to connect, you need pem file, set the permission to `400`
+- <b>IP:</b> ASPE will provide the IP address, for this course we need 1 instance per student
+
+For the docker course, the instance will have Docker installed in it. There's nothing else required.
