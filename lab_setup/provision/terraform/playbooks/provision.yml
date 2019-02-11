@@ -57,6 +57,11 @@
         name: docker-ce={{ dockerversion }}
         state: present
         update_cache: yes
+    - name: '{{ hostname }} - Install docker-compose'
+      apt:
+        name: docker-compose
+        state: present
+        update_cache: yes
     - name: '{{ hostname }} - Start Docker'
       service:
         name: docker
