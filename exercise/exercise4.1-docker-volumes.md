@@ -2,7 +2,7 @@
 
 In this exercise, we are going to look at how to manage data within your Docker containers.
 
-Containers are **Ephemeral** and once a container is removed, it is gone (**including data**). What about scenarios where you want the applications running inside the container to write to some files/data and then ensure that the data is still present? 
+Containers are **Ephemeral** and once a container is removed, it is gone (**including data**). What about scenarios where you want the applications running inside the container to write to some files/data and then ensure that the data is still present?
 
 There are 2 ways in which you can manage data in Docker:
 
@@ -21,20 +21,20 @@ You can mount volumes from host to containers using absolute path as shown below
 
 ```
 # In the host machine
-mkdir -p /foo/bar
+mkdir -p ~/foo/bar
 touch foo/bar/file.1
-docker run -it -v /foo/bar:/data --name vol1 ubuntu:latest
+docker run -it -v ~/foo/bar:/data --name vol1 ubuntu:latest
 
 # The above command takes you to the container
 ls /data 			--> you should see /foo/bar/file.1
 # Create another file in the container
-touch /data/foo/bar/file.2
+touch /data/file.2
 
 # Come out of container without stopping it
 cntrl P Q
 
 # Check the host directory for the two files
-ls /foo/bar/		--> you should see file.1 and file.2
+ls ~/foo/bar/		--> you should see file.1 and file.2
 ```
 
 
@@ -66,4 +66,3 @@ cntrl P Q
 sudo su -
 ls `docker volume inspect -f {{.Mountpoint}} myvolume`
 ```
-
