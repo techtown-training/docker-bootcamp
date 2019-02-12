@@ -26,7 +26,7 @@ touch foo/bar/file.1
 docker run -it -v ~/foo/bar:/data --name vol1 ubuntu:latest
 
 # The above command takes you to the container
-ls /data 			--> you should see /foo/bar/file.1
+ls /data 			--> you should see file.1 from the host ~/foo/bar directory
 # Create another file in the container
 touch /data/file.2
 
