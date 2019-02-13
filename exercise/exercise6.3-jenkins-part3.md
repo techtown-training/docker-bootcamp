@@ -2,37 +2,26 @@
 
 Let's leverage our earlier effort at building a Jenkins node in Docker to build a Continuous Integration pipeline. We will be adapting our earlier jenkinsdocker image.
 
+# Install Docker Compose in the ~/jenkinsdocker/Dockerfile
+
+Since our example requires Docker-Compose, we will need to install Docker-Compose within our Dockerfile. There are two common ways to install Docker-Compose, the first is with a curl script (as in a previous example) and the second is through Python-pip. Since installing with a curl script in our Dockerfile requires sudo and tends to be interfered with by networking proxies, let's use the pip method.
+
+Within in the Dockerfile we will need to make sure `python-pip` is installed before we install `docker-compose`.
 
 ## Add Docker-Workflow to Jenkins Plugins
 
-First, we'll need to add the Jenkins Docker-Workflow plugin. We could add this every time we start Jenkins from the GUI (like we did with the "Recommended Plugins), but automating the process saves us that manual effort.
+We also will require the Jenkins Docker-Workflow plugin. We could add this every time we start Jenkins from the GUI (like we did with the "Recommended Plugins), but lets automate the process saves us that manual effort.  Within the updated Dockerfile below you will notice that the jenkins plugins ar installed as the `jenkins` user.
 
-Use your editor of choice to add this line to the end of the dockerfile at ~/jenkinsdocker/dockerfile:
+For this exercise we also need `libltdl7` installed our Jenkins image.
 
+# Full Dockerfile
+The full Dockerfile will look like
 ```
-RUN /usr/local/bin/install-plugins.sh docker-workflow
-```
-
-
-# Install Docker Compose in the ~/jenkinsdocker/dockerfile
-
-Since our example requires Docker-Compose, we will need to install Docker-Compose within our dockerfile. There are two common ways to install Docker-Compose, the first is with a curl script (as in a previous example) and the second is through Python-pip. Since installing with a curl script in our dockerfile requires sudo and tends to be interfered with by networking proxies, let's use the pip method.
-
-Add the following lines to our ~/jenkinsdocker/dockerfile with your editor of choice:
-
-```
-RUN apt-get update && apt-get install -y sudo python-pip 
-RUN pip install docker-compose
-```
-
-# Full dockerfile
-The full dockerfile will look like
-```
-FROM jenkins:2.19.3
+FROM jenkins/jenkins:lts
 
 USER root
 RUN apt-get update \
-      && apt-get install -y sudo python-pip \
+      && apt-get install -y sudo python-pip libltdl7 \
       && rm -rf /var/lib/apt/lists/* \
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 RUN pip install docker-compose
@@ -73,10 +62,10 @@ Once again, walk through setting up the Jenkins instance by grabbing password fr
 
 ```
 node {  
-  stage 'Checkout' 
+  stage 'Checkout'
   git url: 'https://github.com/papaludwig/jenkins-docker-example.git'  
 
-  stage 'Build' 
+  stage 'Build'
   docker.build('mobycounter')  
 
   stage 'Deploy'  
@@ -89,6 +78,6 @@ node {
 
 The git url pulls down all the components for a complete docker-compose based "system" that includes a redis service, a web service, etc. and causes all of that to be built using the host's docker engine.
 
-The build stage will takes quite some time, because it will be causing new images to be downloaded, etc. Expect a max of about 4 minutes.
+The build stage can take quite some time, because it will be causing new images to be downloaded, etc. Expect a max of about 4 minutes.
 
 If the Checkout, Build, and Deploy steps all succeed then you can view the application running on the ip of the Jenkins Server at port 80. Enter the IP in your browser window and if you see a 'click to add icons' message then your application has succeeded. Each time you click, the logo of our favorite containerization will be added where you click, and the position and count will be saved in a Redis DB. Visiting the page again will cause all of your old clicks to be replayed.

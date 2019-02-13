@@ -3,7 +3,7 @@
 In this example we will run Jenkins from a container, and, because we will share a volume that includes access to docker.sock, our new container will be able to communicate with the host docker engine to spin up containers on the host.
 
 
-## Create a directory that will contain our image's files and the dockerfile
+## Create a directory that will contain our image's files and the Dockerfile
 
 ```
 cd ~
@@ -12,19 +12,17 @@ cd jenkinsdocker
 ```
 
 
-## Create a new dockerfile
+## Create a new Dockerfile
 
-```
-nano dockerfile
-```
+With your editor of choice create a new `Dockerfile` in the `jenkinsdocker` directory.
 
 
 ## Start with the official Jenkins container
 
-The official Jenkins container can be found with a quick search of Docker hub. We can use the official Jenkins image as our starting point. We will specify a version but you could just as easily specify or default to the latest version. We use the dockerfile FROM directive to specify our base image.
+The official Jenkins container can be found with a quick search of Docker hub. We can use the official Jenkins image as our starting point. We will specify a version but you could just as easily specify or default to the latest version. We use the Dockerfile FROM directive to specify our base image.
 
 ```
-FROM jenkins:2.19.3
+FROM jenkins/jenkins:lts
 ```
 
 
@@ -34,7 +32,7 @@ We want Jenkins to have root priviledges because it will be doing many system-le
 
 This would of course be considered a security vulnerability in a production setting, but we're keeping our examples deliberately simple to concentrate on learning Docker.
 
-We use the dockerfile USER directive to specify that we want the following commands to be executed by the root user. We then add the sudo command by using the RUN directive to run apt-get.
+We use the Dockerfile USER directive to specify that we want the following commands to be executed by the root user. We then add the sudo command by using the RUN directive to run apt-get.
 
 Finally we add the jenkins user to the list of sudoers by using the RUN directive to echo out the appropriate line to the appropriate file.
 
@@ -45,12 +43,12 @@ RUN apt-get update \
       && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 ```
-Press ctrl-x to exit nano, press y to save, and press return to accept the original "dockerfile" file name.
+Press ctrl-x to exit nano, press y to save, and press return to accept the original "Dockerfile" file name.
 
 
 ## Build our docker image
 
-Building a docker image using the dockerfile we just wrote is straightforward. This will result in a newly built local docker image. The following command assumes you are in the same directory as the dockerfile.
+Building a docker image using the Dockerfile we just wrote is straightforward. This will result in a newly built local docker image. The following command assumes you are in the same directory as the Dockerfile.
 
 ```
 docker build -t jenkinsdocker .
