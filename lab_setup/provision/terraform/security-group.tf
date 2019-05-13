@@ -1,7 +1,7 @@
 resource "aws_security_group" "labVPC_Security_Group" {
   vpc_id       = "${aws_vpc.labVPC.id}"
-  name         = "Lab VPC Security Group"
-  description  = "Lab VPC Security Group"
+  name         = "${var.aspe_courseID}-${var.aspe_sessionID}-Lab"
+  description  = "${var.aspe_courseID}-${var.aspe_sessionID}-Lab Security Group"
   egress {
     cidr_blocks = "${var.aws_egressCIDRblock}"
     from_port   = 0
