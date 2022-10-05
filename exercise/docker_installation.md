@@ -27,7 +27,7 @@ sudo docker run hello-world
 ```
 
 #### Step 3
-Add sudo access 
+Add sudo access
 
 ```
 sudo groupadd docker
@@ -53,18 +53,17 @@ ssh to the machine
 
 #### Step 2
 ```
-curl -sSL https://get.docker.com/ | sh
+curl -fsSL https://get.docker.com | sudo VERSION=19.03 sh
 ```
 
 #### Step 3
-Add sudo access 
+Add sudo access
 
 ```
-sudo groupadd docker
 sudo usermod -aG docker $USER
 exit
 # log back again to the machine
-``` 
+```
 
 #### Step 4
 Check docker installation
@@ -73,4 +72,3 @@ Check docker installation
 docker info
 docker version
 ```
-
