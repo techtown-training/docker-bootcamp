@@ -17,19 +17,19 @@ For this exercise we also need `libltdl7` installed our Jenkins image.
 # Full Dockerfile
 The full Dockerfile will look like
 ```
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:2.361.2-lts
 
 USER root
 RUN apt-get update \
-      && apt-get install -y sudo python-pip libltdl7 \
+      && apt-get install -y sudo python3-pip libltdl7 \
       && rm -rf /var/lib/apt/lists/* \
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 RUN pip install docker-compose
 
 USER jenkins
-RUN /usr/local/bin/install-plugins.sh workflow-aggregator && \
-    /usr/local/bin/install-plugins.sh docker-workflow && \
-    /usr/local/bin/install-plugins.sh git
+RUN /bin/jenkins-plugin-cli --plugins workflow-aggregator && \
+    /bin/jenkins-plugin-cli --plugins docker-workflow && \
+    /bin/jenkins-plugin-cli --plugins git
 ```
 
 # Rebuild the jenkinsdocker Image
